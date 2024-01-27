@@ -79,5 +79,5 @@ func ready (s *discordgo.Session, event *discordgo.Ready) {
   s.UpdateGameStatus(0, "!airhorn")
 
 }
-
- 
+// pauza 
+ // https://github.com/bwmarrin/discordgo/blob/master/examples/airhorn/main.go 
