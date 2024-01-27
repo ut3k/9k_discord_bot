@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 	"os"
-  "fmt"
+  "9k_discord_bot/bot"
+  
 
-	// "github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
 )
 
@@ -14,8 +14,7 @@ func main () {
   if err !=nil {
     log.Fatal("Error loading .env file")
   }
-  BotToken := os.Getenv("BOT_TOKEN")
+  bot.BotToken = os.Getenv("BOT_TOKEN")
+  bot.Run()
 
-  // discord, err := discordgo.New("Bot " + BotToken)
-  fmt.Println(BotToken)
 }
