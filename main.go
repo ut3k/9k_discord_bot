@@ -22,11 +22,13 @@ func init(){
   }
 }
 
-var  BotToken string = os.Getenv("BOT_TOKEN")
+
 var buffer = make ([][]byte, 0)
 
 func main () {
   
+  var BotToken string
+  BotToken = os.Getenv("BOT_TOKEN")
   // load sound effect
   err := loadSound()
   if err != nil{
@@ -34,6 +36,7 @@ func main () {
     return
   }
 
+  fmt.Println(BotToken)
 
   // New discord session
   dg, err := discordgo.New("Bot " + BotToken)
@@ -89,7 +92,9 @@ func messageCreate (s *discordgo.Session, m *discordgo.MessageCreate) {
   }
   
  // check if msg is "!airHorn"
-  if strings.HasPrefix(m.Content, "!airhorn"){
+  if strings.HasPrefix(m.Content, "1122"){
+    
+    fmt.Println("pojawił się kod 1122")
 
     // find chanel msg came from
     c, err := s.State.Channel(m.ChannelID)
