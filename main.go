@@ -22,10 +22,9 @@ func main() {
   var BotToken string
 
   BotToken = os.Getenv("BOT_TOKEN")
-  fmt.Println(BotToken)
 
 
-  dg, err := discordgo.New("Bot" + BotToken)
+  dg, err := discordgo.New("Bot " + BotToken)
   if err != nil {
     fmt.Println("error creating Discord session")
     return
