@@ -7,7 +7,7 @@ import (
   "encoding/binary"
   "io"
   "os/signal"
-  "strings"
+  // "strings"
   "syscall"
   "time"
 
@@ -80,7 +80,7 @@ func main () {
 func ready (s *discordgo.Session, event *discordgo.Ready) {
 
   // set the playing status.
-  s.UpdateGameStatus(0, "!airhorn")
+  s.UpdateGameStatus(0, "PANIC alert")
 
 }
 
@@ -91,8 +91,9 @@ func messageCreate (s *discordgo.Session, m *discordgo.MessageCreate) {
     return
   }
   
- // check if msg is "!airHorn"
-  if strings.HasPrefix(m.Content, "1122"){
+  // check if msg is "!airHorn"
+  // reakcja , kiedy bot wykryje oznaczenie wszystkich
+  if m.MentionEveryone {
     
     fmt.Println("pojawił się kod 1122")
 
