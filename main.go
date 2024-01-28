@@ -55,13 +55,34 @@ func main() {
 
 func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate){
 
+  // błąd po stronie discorda na boty zapraszane samemu na serwer
+  // zawratość pola "Content" jest pusta, wszysto po niżej nie zadziała
+
+  // obejscie problemu  z githuba'a też nie działa
+
+  if m.Content == "" {
+		chanMsgs, err := s.ChannelMessages(m.ChannelID, 1, "", "", m.ID)
+		if err != nil {
+			// log.Errorf("unable to get messages: %s", err)
+			return
+		}
+		m.Content = chanMsgs[0].Content
+		m.Attachments = chanMsgs[0].Attachments
+    var tekst string
+    tekst = chanMsgs[0].Content
+    fmt.Println(tekst)
+	}
   // omijanie własnych rekacji bota na siebie samego
-  if m.Content == "ping" {
+  if m.Content == "aa" {
     s.ChannelMessageSend(m.ChannelID, "Pong !")
+    fmt.Println("wykryto @everyone")
+    fmt.Println(m.Content)
   }
   if m.Content == "pong" {
     s.ChannelMessageSend(m.ChannelID, "ping !!")
   }
+
+
 
 }
 
